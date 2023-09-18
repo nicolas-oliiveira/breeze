@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/', 'PrincipalController@principal')->name('site.index');
+Route::get('/sobre-nos', 'SobreNosController@sobrenos')->name('site.sobrenos');
+Route::get('/contato', 'ContatoController@contato')->name('site.contato');
+Route::post('/contato', 'ContatoController@contato')->name('site.contato');
+
 
 Route::get('/', function () {
     return 'AULA DE PW III';
@@ -29,6 +32,12 @@ Route::get('/quemsomos', function () {
 Route::get('/contato', function () {
     return 'Contato';
 });
+
+Route::get('/principal', function () {
+    return 'Principal';
+});
+
+
 
 Route::get('/', 'App\Http\Controllers\PrincipalController@principal');
 Route::get('/sobrenos', 'App\Http\Controllers\SobreNosController@principal');
